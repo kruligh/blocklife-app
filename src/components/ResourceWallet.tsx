@@ -2,8 +2,7 @@ import * as React from "react";
 import * as TruffleContract from "truffle-contract";
 import * as Web3 from "web3";
 
-const MetaCoinContract = TruffleContract(require("../../build/contracts/MetaCoin.json"));
-import IMetaCoin from "../contract-interfaces/IMetaCoin";
+const MetaCoinContract = TruffleContract(require("adventurer-exchange/build/contracts/ResourceToken.json"));
 
 interface IMetaWalletProps {
   web3: Web3;
@@ -16,7 +15,7 @@ interface IMetaWalletState {
   contractAddress: string;
 }
 
-export default class MetaWallet extends React.Component<IMetaWalletProps, IMetaWalletState> {
+export default class ResourceWallet extends React.Component<IMetaWalletProps, IMetaWalletState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,10 +35,13 @@ export default class MetaWallet extends React.Component<IMetaWalletProps, IMetaW
       return;
     }
     MetaCoinContract.setProvider(this.props.web3.currentProvider);
-    let instance: IMetaCoin;
+    let instance: any;
     try {
+      console.log(this.props.web3.eth.accounts);
+      console.log(this.props.web3.isConnected());
       instance = await MetaCoinContract.deployed();
     } catch (err) {
+      console.log(err);
       alert(err);
       return;
     }

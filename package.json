@@ -2,58 +2,17 @@
   "name": "truffle-react-ts-template",
   "version": "1.0.0",
   "description": "React DApp TS Template",
-  "keywords": [
-    "typescript",
-    "react",
-    "dapp"
-  ],
-  "bugs": {
-    "url": "https://github.com/LibertyLocked/truffle-react-ts-template/issues"
-  },
-  "author": "libertylocked",
-  "contributors": [
-    "libertylocked"
-  ],
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/libertylocked/truffle-react-ts-template.git"
-  },
   "scripts": {
     "start": "npm run-script dev",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "test": "jest --verbose --coverage",
+    "test": "test",
     "lint": "tslint -p tsconfig.json",
     "clean": "./node_modules/.bin/rimraf ./build"
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx,js,jsx}"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/jest/polyfills.ts"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/*.(ts|tsx|js|jsx)",
-      "<rootDir>/src/**/?(*.)(spec|test).(ts|tsx|js|jsx)"
-    ],
-    "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/file-transform.ts",
-      "\\.(css|less)$": "identity-obj-proxy"
-    }
-  },
   "dependencies": {
+    "adventurer-exchange": "git+https://github.com/kruligh/blocklife.git",
     "bignumber.js": "^4.1.0",
     "bluebird": "^3.5.1",
     "ethereumjs-util": "^5.1.2",
@@ -65,7 +24,6 @@
   },
   "devDependencies": {
     "@types/bignumber.js": "^4.0.3",
-    "@types/jest": "^21.1.6",
     "@types/node": "^8.0.51",
     "@types/react": "^16.0.22",
     "@types/react-dom": "^16.0.3",
@@ -76,7 +34,6 @@
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.5",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^21.2.1",
     "postcss-loader": "^2.0.8",
     "rimraf": "^2.6.2",
     "source-map-loader": "^0.2.3",
