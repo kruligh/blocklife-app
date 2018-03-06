@@ -1,52 +1,49 @@
-import * as React from "react";
-import * as TruffleContract from "truffle-contract";
-import * as Web3 from "web3";
+import * as React from 'react';
+import * as TruffleContract from 'truffle-contract';
+import * as Web3 from 'web3';
+import {Address, AnyNumber} from 'common';
 
-const MetaCoinContract = TruffleContract(require("adventurer-exchange/build/contracts/ResourceToken.json"));
+const ResourceTokenContract = TruffleContract(require('blocklife-contracts/build/contracts/ResourceToken.json'));
 
-interface IMetaWalletProps {
+interface MetaWalletProps {
   web3: Web3;
 }
 
-interface IMetaWalletState {
-  account: string;
+interface MetaWalletState {
+  account: Address;
   accountError: boolean;
-  balance: string;
-  contractAddress: string;
+  balance: AnyNumber;
+  contractAddress: Address;
 }
 
-export default class ResourceWallet extends React.Component<IMetaWalletProps, IMetaWalletState> {
+export default class ResourceWallet extends React.Component<MetaWalletProps, MetaWalletState> {
   constructor(props) {
     super(props);
     this.state = {
-      account: "",
+      account: '',
       accountError: false,
-      balance: "",
-      contractAddress: "",
+      balance: '',
+      contractAddress: '',
     };
   }
 
   public async componentWillMount() {
     if (this.props.web3.eth.accounts.length === 0) {
       this.setState({
-        account: "",
+        account: '',
         accountError: true,
       });
       return;
     }
-    MetaCoinContract.setProvider(this.props.web3.currentProvider);
+    ResourceTokenContract.setProvider(this.props.web3.currentProvider);
     let instance: any;
     try {
-      console.log(this.props.web3.eth.accounts);
-      console.log(this.props.web3.isConnected());
-      instance = await MetaCoinContract.deployed();
+      instance = await ResourceTokenContract.deployed();
     } catch (err) {
-      console.log(err);
       alert(err);
       return;
     }
-
-    const balance  = await instance.getBalance(this.props.web3.eth.accounts[0]);
+    const balance = await instance.balanceOf(this.props.web3.eth.accounts[0]);
     this.setState({
       account: this.props.web3.eth.accounts[0],
       accountError: false,
@@ -57,12 +54,12 @@ export default class ResourceWallet extends React.Component<IMetaWalletProps, IM
 
   public render() {
     return (
-    <div>
-      <h3>MetaCoin</h3>
-      <p>Contract address: {this.state.contractAddress}</p>
-      <p>Account: {this.state.accountError ? "No accounts found" : this.state.account}</p>
-      <p>Balance: {this.state.balance}</p>
-    </div>
+      <div>
+        <h3>MetaCoin</h3>
+        <p>Contract address: {this.state.contractAddress}</p>
+        <p>Account: {this.state.accountError ? 'No accounts found' : this.state.account}</p>
+        <p>Balance: {this.state.balance}</p>
+      </div>
     );
   }
 }

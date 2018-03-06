@@ -17,8 +17,10 @@
     "noUnusedParameters": false
   },
   "include": [
+    "types/**/*.ts",
     "src",
     "webpack.config.ts",
+    "truffle-config.ts",
     "node_modules/web3-typescript-typings/index.d.ts"
   ]
 }

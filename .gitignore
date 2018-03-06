@@ -1,3 +1,6 @@
+# javascript
+*.js
+
 # dependencies
 /node_modules
 
@@ -20,3 +23,7 @@ tmp/
 
 # chrome debugger userdata dir
 .chrome
+
+# ide
+/.idea
+
