@@ -1,9 +1,8 @@
 import * as React from 'react';
-import * as TruffleContract from 'truffle-contract';
 import * as Web3 from 'web3';
 import {Address, AnyNumber} from 'common';
-
-const ResourceTokenContract = TruffleContract(require('blocklife-contracts/build/contracts/ResourceToken.json'));
+import {ResourceTokenContract} from '../contracts';
+import {Resource} from 'blocklife-contracts';
 
 interface MetaWalletProps {
   web3: Web3;
@@ -36,13 +35,8 @@ export default class ResourceWallet extends React.Component<MetaWalletProps, Met
       return;
     }
     ResourceTokenContract.setProvider(this.props.web3.currentProvider);
-    let instance: any;
-    try {
-      instance = await ResourceTokenContract.deployed();
-    } catch (err) {
-      alert(err);
-      return;
-    }
+    const instance: Resource = await ResourceTokenContract.at('0x511cf0ecd9f2dd1282409cc5dd0dec92cc8edae2');
+    console.log(instance);
     const balance = await instance.balanceOf(this.props.web3.eth.accounts[0]);
     this.setState({
       account: this.props.web3.eth.accounts[0],

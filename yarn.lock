@@ -375,9 +375,9 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-"blocklife-contracts@https://github.com/kruligh/blocklife-contracts.git#feature/mine_building":
+"blocklife-contracts@https://github.com/kruligh/blocklife-contracts.git#6db04914a808aba0534b1505b87fd3ee72d81c64":
   version "0.0.0"
-  resolved "https://github.com/kruligh/blocklife-contracts.git#85c95298eba4936030f57ee0e47b6dd5214db6b5"
+  resolved "https://github.com/kruligh/blocklife-contracts.git#6db04914a808aba0534b1505b87fd3ee72d81c64"
   dependencies:
     zeppelin-solidity "^1.6.0"
 

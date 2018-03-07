@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "bignumber.js": "^4.1.0",
-    "blocklife-contracts": "https://github.com/kruligh/blocklife-contracts.git#feature/mine_building",
+    "blocklife-contracts": "https://github.com/kruligh/blocklife-contracts.git#6db04914a808aba0534b1505b87fd3ee72d81c64",
     "bluebird": "^3.5.1",
     "ethereumjs-util": "^5.1.2",
     "raf": "^3.4.0",
